@@ -64,10 +64,17 @@ export const PokemonDetail = () => {
           <h2 className="text-xl font-semibold text-white text-center">
             Base Stats
           </h2>
-          <ul className="flex flex-col text-white gap-1 pt-2">
+          <ul className="flex flex-col text-white gap-3 pt-2">
             <li className="flex flex-row items-center">
               HP
               <div className="mx-2 bg-white w-full h-3 rounded-full">
+                <div
+                  className="h-full rounded-full"
+                  style={{
+                    width: `${(data.stats[0].base_stat / maxStats.hp) * 100}%`,
+                    backgroundColor: "#D63947",
+                  }}
+                />
                 <p className="text-sm text-stone-400">
                   {data.stats[0].base_stat}/{maxStats.hp}
                 </p>
@@ -76,6 +83,15 @@ export const PokemonDetail = () => {
             <li className="flex flex-row items-center">
               ATK
               <div className="mx-2 bg-white w-full h-3 rounded-full">
+                <div
+                  className="h-full rounded-full"
+                  style={{
+                    width: `${
+                      (data.stats[1].base_stat / maxStats.attack) * 100
+                    }%`,
+                    backgroundColor: "#FDA724",
+                  }}
+                />
                 <p className="text-sm text-stone-400">
                   {data.stats[1].base_stat}/{maxStats.attack}
                 </p>
@@ -84,22 +100,32 @@ export const PokemonDetail = () => {
             <li className="flex flex-row items-center">
               DEF
               <div className="mx-2 bg-white w-full h-3 rounded-full">
+                <div
+                  className="h-full rounded-full"
+                  style={{
+                    width: `${
+                      (data.stats[2].base_stat / maxStats.defense) * 100
+                    }%`,
+                    backgroundColor: "#0094EB",
+                  }}
+                />
                 <p className="text-sm text-stone-400">
                   {data.stats[2].base_stat}/{maxStats.defense}
                 </p>
               </div>
             </li>
             <li className="flex flex-row items-center">
-              SPA
-              <div className="mx-2 bg-white w-full h-3 rounded-full">
-                <p className="text-sm text-stone-400">
-                  {data.stats[4].base_stat} / {maxStats.specialAttack}
-                </p>
-              </div>
-            </li>
-            <li className="flex flex-row items-center">
               SPD
               <div className="mx-2 bg-white w-full h-3 rounded-full">
+                <div
+                  className="h-full rounded-full"
+                  style={{
+                    width: `${
+                      (data.stats[5].base_stat / maxStats.speed) * 100
+                    }%`,
+                    backgroundColor: "#378D3C",
+                  }}
+                />
                 <p className="text-sm text-stone-400">
                   {data.stats[5].base_stat}/{maxStats.speed}
                 </p>
@@ -108,7 +134,16 @@ export const PokemonDetail = () => {
             <li className="flex flex-row items-center">
               EXP
               <div className="mx-2 bg-white w-full h-3 rounded-full">
-                <p className="text-sm text-stone-400">{data.base_experience}/{maxStats.exp}</p>
+                <div
+                  className="h-full rounded-full"
+                  style={{
+                    width: `${(data.base_experience / maxStats.exp) * 100}%`,
+                    backgroundColor: "green",
+                  }}
+                />
+                <p className="text-sm text-stone-400">
+                  {data.base_experience}/{maxStats.exp}
+                </p>
               </div>
             </li>
           </ul>
