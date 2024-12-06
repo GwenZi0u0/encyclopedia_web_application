@@ -1,13 +1,15 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { usePokemonData } from "../api/api";
 import BallLoading from "../assets/ball-loading.svg";
+import { NavBar } from "../components/NavBar";
 import { PokemonDetail } from "./PokemonDetail";
 
 export const PokemonList = () => {
+  const navigate = useNavigate();
   const [offset, setOffset] = useState(0);
   const limit = 20;
   const { data, error, isLoading } = usePokemonData(offset, limit);
-  // const { data: pokemonData, error: pokemonError, isLoading: pokemonIsLoading } = usePokemonDataById();
   const [selectedPokemon, setSelectedPokemon] = useState(null);
 
   const handleNextPage = () => {
@@ -18,10 +20,9 @@ export const PokemonList = () => {
     setOffset((prevOffset) => prevOffset - limit);
   };
 
-  const handlePokemonSelect = (pokemonUrl) => {
-    console.log(pokemonUrl);
-    const pokemonId = pokemonUrl.split("/");
-    setSelectedPokemon(pokemonId);
+  const handlePokemonSelect = (pokemonName) => {
+    setSelectedPokemon(pokemonName);
+    navigate(`/pokemon/${pokemonName}`);
   };
 
   if (isLoading)
@@ -33,7 +34,8 @@ export const PokemonList = () => {
 
   return (
     <>
-      <div className="pt-16 w-full h-auto xl:w-9/12">
+      <NavBar />
+      <div className="pt-20 p-4 w-full h-auto xl:w-9/12 ">
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {data?.results.map((pokemon, index) => (
             <div
@@ -55,7 +57,7 @@ export const PokemonList = () => {
             </div>
           ))}
         </div>
-        {selectedPokemon && <PokemonDetail id={"bulbasaur"} />}
+        {selectedPokemon && <PokemonDetail id={selectedPokemon} />}
 
         <div className="flex justify-between mt-4">
           <button
