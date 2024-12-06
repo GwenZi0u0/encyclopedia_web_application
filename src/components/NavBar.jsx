@@ -47,7 +47,7 @@ export const NavBar = () => {
             className="text-white"
             onClick={() => setIsMenuOpen(false)}
           >
-            Pokemon
+            Pokémon
           </Link>
           <Link
             to="/digimon"
@@ -74,7 +74,7 @@ export const NavBar = () => {
               className="block text-white py-2"
               onClick={() => setIsMenuOpen(false)}
             >
-              Pokemon
+              Pokémon
             </Link>
             <Link
               to="/digimon"

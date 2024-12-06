@@ -9,8 +9,10 @@ export const fetchPokemon = async (offset, limit) => {
   return data;
 };
 
-export const fetchPokemonById = async (id) => {
-  const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
+export const fetchPokemonById = async (idOrName) => {
+  const { data } = await axios.get(
+    `https://pokeapi.co/api/v2/pokemon/${idOrName}`
+  );
   return data;
 };
 
@@ -21,11 +23,11 @@ export const usePokemonData = (offset, limit) => {
   });
 };
 
-export const usePokemonDataById = (id) => {
+export const usePokemonDataById = (idOrName) => {
   return useQuery({
-    queryKey: [queryKeys.pokemon.byId, id],
-    queryFn: () => fetchPokemonById(id),
-    enabled: !!id,
+    queryKey: [queryKeys.pokemon.byId, idOrName],
+    queryFn: () => fetchPokemonById(idOrName),
+    enabled: !!idOrName,
   });
 };
 
