@@ -4,7 +4,7 @@ export const Home = () => {
   return (
     <>
       <NavBar />
-      <div className="pt-20 p-4 flex flex-col items-center justify-center w-full h-full space-y-4 pt-20">
+      <div className="pt-20 p-4 flex flex-col items-center justify-center w-full h-full space-y-4">
         <h1 className="text-4xl font-bold text-white">
           Welcome to the Encyclopedia Web
         </h1>
