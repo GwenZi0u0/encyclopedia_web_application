@@ -27,6 +27,6 @@ export const routes = [
   },
   {
     path: "*",
-    element: <h1>404 Not Found</h1>,
+    element: <h1 className="text-white">404 Not Found</h1>,
   },
 ];
